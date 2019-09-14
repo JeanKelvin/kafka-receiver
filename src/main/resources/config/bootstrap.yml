@@ -1,0 +1,13 @@
+server:
+  port: ${APPLICATION_SERVER:8200}
+  servlet:
+    application-display-name: ${APPLICATION_NAME:frete-consumer}
+
+spring:
+  application:
+    name: ${server.servlet.application-display-name}
+  cloud:
+    config:
+      enabled: false
+      discovery:
+        enabled: false
