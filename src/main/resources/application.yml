@@ -5,6 +5,8 @@ kafka:
   map:
     sku-atualizado: "com.example.consumer.commands.SkuCommand"
     sku-lojista-atualizado: "com.example.consumer.commands.SkuLojistaCommand"
+  producerMap:
+    TOPICSKUID: "sku-id-atualizado"
 
 javamelody:
   management-endpoint-monitoring-enabled: false

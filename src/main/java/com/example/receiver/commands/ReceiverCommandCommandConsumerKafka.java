@@ -16,7 +16,7 @@ abstract class ReceiverCommandCommandConsumerKafka<T extends BaseEntity, ID> imp
 
     public abstract MongoRepository<T, ID> getRepository();
 
-    void inserirOuAtualizarRegistro(String message, T queryEntity, T newEntity, String topic) {
+    T inserirOuAtualizarRegistro(String message, T queryEntity, T newEntity, String topic) {
         try {
 
             T fromQuery = null;
@@ -34,8 +34,8 @@ abstract class ReceiverCommandCommandConsumerKafka<T extends BaseEntity, ID> imp
 
             verificaDataInclusaoRegistro(newEntity);
 
-            getRepository().save(newEntity);
-            log.info("Registro salvo", newEntity);
+            log.info("Salvando registro", newEntity);
+            return getRepository().save(newEntity);
         } catch (Exception ex) {
             //TODO Definir exeception
             throw new RuntimeException();
